@@ -3,24 +3,20 @@ var channel = require('cordova/channel'),
     exec = require('cordova/exec'),
     cordova = require('cordova');
 
-channel.createSticky('onCordovaInfoReady');
-// Tell cordova channel to wait on the CordovaInfoReady event
-channel.waitForInitialization('onCordovaInfoReady');
-
 /**
  * This provides additional device info that is not provided by the default cordova device object
  *  - density: screen density (android only)  
  */
 function FHDevice() {
     this.density = null;
-
+    this.available = false;
+    
     var me = this;
 
     channel.onCordovaReady.subscribe(function() {
         me.getInfo(function(info) {
            me.available = true;
            me.density = info.density;
-           channel.onCordovaInfoReady.fire();
         },function(e) {
             me.available = false;
             utils.alert("[ERROR] Error initializing FHDevice: " + e);

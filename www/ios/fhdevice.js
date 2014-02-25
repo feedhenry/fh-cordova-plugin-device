@@ -3,10 +3,6 @@ var channel = require('cordova/channel'),
     exec = require('cordova/exec'),
     cordova = require('cordova');
 
-channel.createSticky('onCordovaInfoReady');
-// Tell cordova channel to wait on the CordovaInfoReady event
-channel.waitForInitialization('onCordovaInfoReady');
-
 /**
  * This provides additional device info that is not provided by the default cordova device object
  *  - cuidMap : an object containing a set of device ids (ios only)
@@ -15,6 +11,7 @@ channel.waitForInitialization('onCordovaInfoReady');
 function FHDevice() {
     this.cuidMap = false;
     this.uuid = null;
+    this.available = false;
 
     var me = this;
 
@@ -23,7 +20,6 @@ function FHDevice() {
            me.available = true;
            me.cuidMap = info.cuidMap;
            me.uuid = info.uuid;
-           channel.onCordovaInfoReady.fire();
         },function(e) {
             me.available = false;
             utils.alert("[ERROR] Error initializing FHDevice: " + e);
