@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:rim="http://www.blackberry.com/ns/widgets"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.feedhenry.plugin.device"
+    version="0.0.1">
+    <name>FHDevice</name>
+    <description>The plugin contains device info used by FeedHenry</description>
+
+    
+    
+    <!-- android -->
+    <platform name="android">
+        <js-module src="www/android/fhdevice.js" name="fhdevice">
+            <clobbers target="fhdevice" />
+        </js-module>
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="FHDevice" >
+                <param name="android-package" value="com.feedhenry.phonegap.device.FHDevice"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/FHDevice.java" target-dir="src/com/feedhenry/phonegap/device" />
+    </platform>
+
+    <!-- ios -->
+    <platform name="ios">
+        <js-module src="www/ios/fhdevice.js" name="fhdevice">
+            <clobbers target="fhdevice" />
+        </js-module>
+        <config-file target="config.xml" parent="/*">
+            <feature name="FHDevice">
+                <param name="ios-package" value="FHDevice"/>
+            </feature>
+        </config-file>
+
+        <header-file src="src/ios/FHDevice.h" />
+        <source-file src="src/ios/FHDevice.m" />
+        <header-file src="src/ios/UIDevice+IdentifierAddition.h" />
+        <source-file src="src/ios/UIDevice+IdentifierAddition.m" />
+
+        <framework src="AdSupport.framework" />
+    </platform>
+</plugin>
