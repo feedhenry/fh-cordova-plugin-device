@@ -20,6 +20,12 @@ function FHDevice() {
            me.available = true;
            me.cuidMap = info.cuidMap;
            me.uuid = info.uuid;
+           //keep backward compatible
+           if(window.device){
+             window.device.cordova_uuid = window.device.uuid;
+             window.device.uuid = me.uuid;
+             window.device.cuidMap = me.cuidMap;
+           }
         },function(e) {
             me.available = false;
             utils.alert("[ERROR] Error initializing FHDevice: " + e);
