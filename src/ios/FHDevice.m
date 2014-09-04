@@ -16,10 +16,6 @@
  specific language governing permissions and limitations
  under the License.
  */
-
-//part of the core CordovaLib
-#import "UIDevice+Extensions.h"
-
 #import <Cordova/CDV.h>
 #import "FHDevice.h"
 
@@ -41,11 +37,7 @@
     NSMutableDictionary* devProps = [NSMutableDictionary dictionaryWithCapacity:4];
 
     //the change here was to use the category on UIDevice imported above
-    if([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0){
-      [devProps setObject:[device uniqueAppInstanceIdentifier] forKey:@"uuid"];
-    } else {
-      [devProps setObject:[device uniqueIdentifier] forKey:@"uuid"];
-    }
+    [devProps setObject:[device uniqueAppInstanceIdentifier] forKey:@"uuid"];
       
     // Generate cuidMap
     NSMutableArray *cuidMap = [[NSMutableArray alloc] init];
