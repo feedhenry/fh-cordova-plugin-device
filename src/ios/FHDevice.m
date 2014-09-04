@@ -17,7 +17,8 @@
  under the License.
  */
 
-#import "UIDevice+IdentifierAddition.h"
+//part of the core CordovaLib
+#import "UIDevice+Extensions.h"
 
 #import <Cordova/CDV.h>
 #import "FHDevice.h"
@@ -40,34 +41,23 @@
     NSMutableDictionary* devProps = [NSMutableDictionary dictionaryWithCapacity:4];
 
     //the change here was to use the category on UIDevice imported above
-  
-    // Send advertiserId for iOS7+
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0) {
-      [devProps setObject:[device uniqueDeviceIdentifier] forKey:@"uuid"];
+    if([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0){
+      [devProps setObject:[device uniqueAppInstanceIdentifier] forKey:@"uuid"];
     } else {
-      [devProps setObject:[device advertiserId] forKey:@"uuid"];
+      [devProps setObject:[device uniqueIdentifier] forKey:@"uuid"];
     }
-  
+      
     // Generate cuidMap
     NSMutableArray *cuidMap = [[NSMutableArray alloc] init];
-  
-    // MAC and BundleID CUID
-    // Don't send if iOS7+
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0) {
-      NSMutableDictionary *macBundleMap = [[NSMutableDictionary alloc] init];
-      [macBundleMap setObject:@"macAndBundleId" forKey:@"name"];
-      [macBundleMap setObject:[device uniqueDeviceIdentifier] forKey:@"cuid"];
-      [cuidMap addObject:macBundleMap];
-    }
-  
-    // advertisingIdentifier - iOS 6+
-    // if iOS7+, only send advertisingIdentifier
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0) {
-      NSMutableDictionary *advertIdMap = [[NSMutableDictionary alloc] init];
-      [advertIdMap setObject:@"advertisingIdentifier" forKey:@"name"];
-      [advertIdMap setObject:[device advertiserId] forKey:@"cuid"];
-      [advertIdMap setObject:[NSNumber numberWithBool:[device trackingEnabled]] forKey:@"tracking_enabled"];
-      [cuidMap addObject:advertIdMap];
+
+    if([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0) {
+      NSUUID* venderId = [[UIDevice currentDevice] identifierForVendor];
+      if(nil != venderId){
+        NSMutableDictionary *venderIdMap = [[NSMutableDictionary alloc] init];
+        [venderIdMap setObject:@"venderId" forKey:@"name"];
+        [venderIdMap setObject:[venderId UUIDString] forKey:@"cuid"];
+        [cuidMap addObject:venderIdMap];
+      }
     }
   
     // Append to cuidMap

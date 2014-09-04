@@ -4,7 +4,7 @@
     xmlns:rim="http://www.blackberry.com/ns/widgets"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="com.feedhenry.plugin.device"
-    version="0.0.1">
+    version="0.0.2">
     <name>FHDevice</name>
     <description>The plugin contains device info used by FeedHenry</description>
 
@@ -37,11 +37,5 @@
 
         <header-file src="src/ios/FHDevice.h" />
         <source-file src="src/ios/FHDevice.m" />
-        <header-file src="src/ios/UIDevice+IdentifierAddition.h" />
-        <source-file src="src/ios/UIDevice+IdentifierAddition.m" />
-        <header-file src="src/ios/NSString+MD5Addition.h" />
-        <source-file src="src/ios/NSString+MD5Addition.m" />
-
-        <framework src="AdSupport.framework" />
     </platform>
 </plugin>
