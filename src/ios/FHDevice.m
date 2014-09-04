@@ -46,7 +46,7 @@
       NSUUID* venderId = [[UIDevice currentDevice] identifierForVendor];
       if(nil != venderId){
         NSMutableDictionary *venderIdMap = [[NSMutableDictionary alloc] init];
-        [venderIdMap setObject:@"venderId" forKey:@"name"];
+        [venderIdMap setObject:@"vendorIdentifier" forKey:@"name"];
         [venderIdMap setObject:[venderId UUIDString] forKey:@"cuid"];
         [cuidMap addObject:venderIdMap];
       }
