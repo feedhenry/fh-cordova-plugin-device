@@ -25,7 +25,7 @@ exports.defineAutoTests = function () {
     if (deviceType == 'Android') {
       it("should contain a density that is a string", function () {
         expect(fhdevice.density).toBeDefined();
-        expect((new String(window.device.density)).length > 0).toBe(true);
+        expect((new String(fhdevice.density)).length > 0).toBe(true);
       });
     } else {
       it("should contain a UUID specification that is a string", function () {
