@@ -3,8 +3,8 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:rim="http://www.blackberry.com/ns/widgets"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    id="com.feedhenry.plugin.device"
-    version="0.0.2">
+    id="fh-cordova-plugin-device"
+    version="0.0.3">
     <name>FHDevice</name>
     <description>The plugin contains device info used by FeedHenry</description>
 
