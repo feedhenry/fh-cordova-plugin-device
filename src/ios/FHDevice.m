@@ -33,11 +33,10 @@
 
 - (NSDictionary*)deviceProperties
 {
-    UIDevice* device = [UIDevice currentDevice];
     NSMutableDictionary* devProps = [NSMutableDictionary dictionaryWithCapacity:4];
 
     //the change here was to use the category on UIDevice imported above
-    [devProps setObject:[device uniqueAppInstanceIdentifier] forKey:@"uuid"];
+    [devProps setObject:[self uniqueAppInstanceIdentifier] forKey:@"uuid"];
       
     // Generate cuidMap
     NSMutableArray *cuidMap = [[NSMutableArray alloc] init];
@@ -58,6 +57,28 @@
 
     NSDictionary* devReturn = [NSDictionary dictionaryWithDictionary:devProps];
     return devReturn;
+}
+
+- (NSString*)uniqueAppInstanceIdentifier
+{
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    static NSString* UUID_KEY = @"CDVUUID";
+
+    NSString* app_uuid = [userDefaults stringForKey:UUID_KEY];
+
+    if (app_uuid == nil) {
+        CFUUIDRef uuidRef = CFUUIDCreate(kCFAllocatorDefault);
+        CFStringRef uuidString = CFUUIDCreateString(kCFAllocatorDefault, uuidRef);
+
+        app_uuid = [NSString stringWithString:(__bridge NSString*)uuidString];
+        [userDefaults setObject:app_uuid forKey:UUID_KEY];
+        [userDefaults synchronize];
+
+        CFRelease(uuidString);
+        CFRelease(uuidRef);
+    }
+
+    return app_uuid;
 }
 
 @end
