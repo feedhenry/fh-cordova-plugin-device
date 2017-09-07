@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jcesarmobile/fh-cordova-plugin-device.git"
+    "url": "git+https://github.com/feedhenry/fh-cordova-plugin-device.git"
   },
   "keywords": [
     "ecosystem:cordova",
@@ -21,7 +21,7 @@
   "author": "FeedHenry",
   "license": "FeedHenry",
   "bugs": {
-    "url": "https://github.com/jcesarmobile/fh-cordova-plugin-device/issues"
+    "url": "https://github.com/feedhenry/fh-cordova-plugin-device/issues"
   },
-  "homepage": "https://github.com/jcesarmobile/fh-cordova-plugin-device#readme"
+  "homepage": "https://github.com/feedhenry/fh-cordova-plugin-device#readme"
 }
