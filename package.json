@@ -1,0 +1,27 @@
+{
+  "name": "fh-cordova-plugin-device",
+  "version": "0.0.4",
+  "description": "The plugin contains device info used by FeedHenry",
+  "cordova": {
+    "id": "fh-cordova-plugin-device",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcesarmobile/fh-cordova-plugin-device.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "author": "FeedHenry",
+  "license": "FeedHenry",
+  "bugs": {
+    "url": "https://github.com/jcesarmobile/fh-cordova-plugin-device/issues"
+  },
+  "homepage": "https://github.com/jcesarmobile/fh-cordova-plugin-device#readme"
+}

@@ -4,12 +4,12 @@
     xmlns:rim="http://www.blackberry.com/ns/widgets"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="fh-cordova-plugin-device"
-    version="0.0.3">
+    version="0.0.4">
     <name>FHDevice</name>
     <description>The plugin contains device info used by FeedHenry</description>
 
-    
-    
+
+
     <!-- android -->
     <platform name="android">
         <js-module src="www/android/fhdevice.js" name="fhdevice">
